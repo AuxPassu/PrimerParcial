@@ -1,0 +1,148 @@
+# depslib dependency file v1.0
+1557242648 source:d:\alan passucci\passucci_alan_1c_1ºparcial\arraymovies.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Menu.h"
+	"ArrayMovies.h"
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557230038 d:\alan passucci\passucci_alan_1c_1ºparcial\menu.h
+
+1557240195 d:\alan passucci\passucci_alan_1c_1ºparcial\arraymovies.h
+
+1557229650 d:\alan passucci\passucci_alan_1c_1ºparcial\inputs.h
+
+1557229693 d:\alan passucci\passucci_alan_1c_1ºparcial\utilities.h
+
+1557229727 d:\alan passucci\passucci_alan_1c_1ºparcial\stringformat.h
+
+1557229668 source:d:\alan passucci\passucci_alan_1c_1ºparcial\inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557231422 source:d:\alan passucci\passucci_alan_1c_1ºparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1557229740 source:d:\alan passucci\passucci_alan_1c_1ºparcial\stringformat.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557240858 source:d:\alan passucci\passucci_alan_1c_1ºparcial\utilities.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557240534 source:d:\alan passucci\passucci_alan_1c_1ºparcial\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"Menu.h"
+	"ArrayMovies.h"
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557519581 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraymovies.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"ArrayMovies.h"
+	"ArrayGenres.h"
+	"ArrayActors.h"
+
+1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\menu.h
+
+1557515647 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraymovies.h
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\inputs.h
+
+1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\utilities.h
+
+1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\stringformat.h
+
+1557243231 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557519920 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayMovies.h"
+	"ArrayActors.h"
+
+1557257148 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"Menu.h"
+	"ArrayMovies.h"
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557243231 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\stringformat.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557243231 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\utilities.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	"Inputs.h"
+	"Utilities.h"
+	"stringFormat.h"
+
+1557512152 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraygenre.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayMovies.h"
+
+1557519316 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraygenres.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayMovies.h"
+
+1557512176 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraygenres.h
+
+1557513226 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arrayactors.h
+
+1557519240 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arrayactors.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayMovies.h"
+
