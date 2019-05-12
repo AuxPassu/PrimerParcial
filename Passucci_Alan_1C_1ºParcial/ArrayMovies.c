@@ -13,7 +13,7 @@ int movie_showMenu(char message[])
     printf("---------------------------------\n");
     printf("%s", message);
     printf("\n---------------------------------\n\n");
-    option = getValidInt("una opcion", 0, 0, 1); //Pido un entero valido sin rango.
+    option = getValidInt("una opcion", 1, 5, 0); //Pido un entero valido sin rango.
     printf("\n");
     return option;
 }
@@ -23,30 +23,30 @@ void movie_initMovies(sMovie listM[], int sizeM)
     int i;
     for(i=0; i<sizeM; i++)
     {
-        listM[i].isEmpty = EMPTY; //Dejo en libre todos los espacios de mi array de empleados.
+        listM[i].isEmpty = EMPTY; //Dejo en libre todos los espacios de mi array de peliculas.
     }
 }
 
 int movie_addMovie(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sActor listA[], int sizeA)
 {
     int loaded = -1, isSatisfied;
-    int index = movie_searchEmpty(listM, sizeM); //Busco lugar libre en mi array de empleados.
-    sGenre genre; //Variable auxiliar de genre.
+    int index = movie_searchEmpty(listM, sizeM); //Busco lugar libre en mi array de peliculas.
+    sGenre genre; //Variable auxiliar de genero.
     sActor actor;
-    if(index != -1) //Si hay lugar, empiezo a pedir datos de un empleado.
+    if(index != -1) //Si hay lugar, empiezo a pedir datos de una pelicula.
     {
         printf("Dando de alta una pelicula...\n\n");
-        listM[index].id = getRandomNumber(1000, 1999, 1); //Calculo de manera random el legajo del empleado.
-        movie_getMovieTitle(listM, 51, index); //Llamo a la funcion que me permite pedir nombre.
+        listM[index].id = getRandomNumber(1000, 1999, 1); //Calculo de manera random el id de la pelicula.
+        movie_getMovieTitle(listM, 51, index); //Llamo a la funcion que me permite pedir titulo.
         movie_getMovieDate(listM, sizeM, index);
-        genre = genre_getGenre(listG, sizeG); //Obtengo los datos del genre ingresado y lo vinculo al empleado.
+        genre = genre_getGenre(listG, sizeG); //Obtengo los datos del genero ingresado y lo vinculo a la pelicula.
         listM[index].genreId = genre.id;
-        actor = actor_getActor(listA, sizeA);
+        actor = actor_getActor(listA, sizeA); //Obtengo los datos del actor ingresado y lo vinculo a la pelicula.
         listM[index].actorId = actor.id;
         movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1);
         isSatisfied = movie_verifyCompliance("'s' para confirmar el alta de la pelicula"); //Verifico la conformidad del usuario con esta alta.
         if(isSatisfied == 1)
-        {   //Si esta satisfecho, el lugar pasa a estar ocupado e indico que se pudo cargar al empleado.
+        {   //Si esta satisfecho, el lugar pasa a estar ocupado e indico que se pudo cargar a la pelicula.
             listM[index].isEmpty = BUSY;
             loaded = 0;
         }
@@ -64,7 +64,7 @@ int movie_addMovie(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sActor 
 void movie_modifyMovieInfo(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sActor listA[], int sizeA)
 {
     int option, idToFind, index, isSatisfied, found = 0;
-    sMovie auxMov[sizeM]; //Creo un array auxiliar de empleados.
+    sMovie auxMov[sizeM]; //Creo un array auxiliar de peliculas.
     sActor actor;
     do
     {
@@ -73,17 +73,17 @@ void movie_modifyMovieInfo(sMovie listM[], int sizeM, sGenre listG[], int sizeG,
         {
             case 1:
                 if(found == 1)
-                {   //La variable found me ayuda a saber si se selecciono a un empleado para realizar modificaciones en sus datos.
+                {   //La variable found me ayuda a saber si se selecciono a un pelicula para realizar modificaciones en sus datos.
                     printf("Pelicula seleccionado actualmente:\n");
-                    movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1); //Mostrare al empleado seleccionado actualmente al elegir cualquier opcion.
+                    movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1); //Mostrare a la pelicula seleccionada actualmente al elegir cualquier opcion.
                     printf("\n");
-                } //Ordeno y muestro la lista actual de empleados (por apellido y genre) para que se puedan visualizar todos los datos de los mismos.
+                } //Ordeno y muestro la lista actual de peliculas por año para que se puedan visualizar todos los datos de las mismos.
                 movie_sortMovies(listM, sizeM, 1);
                 movie_printMovies(listM, sizeM, listG, sizeG, listA, sizeA);
-                idToFind = getValidInt("ID de la pelicula a modificar datos", 1000, 1999, 0); //Pido el ID del empleado a modificar sus datos.
+                idToFind = getValidInt("ID de la pelicula a modificar datos", 1000, 1999, 0); //Pido el ID de la pelicula a modificar sus datos.
                 index = movie_findMovieById(listM, sizeM, idToFind); //Lo busco.
                 if(index != -1)
-                {   //Si existe, tengo a un empleado seleccionado y listo para realizar modificaciones.
+                {   //Si existe, tengo a una pelicula seleccionada y lista para realizar modificaciones.
                     found = 1;
                     printf("\nPelicula seleccionada actualmente:\n");
                     movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1);
@@ -97,14 +97,14 @@ void movie_modifyMovieInfo(sMovie listM[], int sizeM, sGenre listG[], int sizeG,
                 break;
             case 2:
                 if(found == 1)
-                {   //Siempre y cuando haya seleccionado a un empleado, lo muestro y pido el nuevo nombre del mismo.
+                {   //Siempre y cuando haya seleccionado a una pelicula, la muestro y pido el nuevo titulo de la misma.
                     printf("Pelicula seleccionado actualmente:\n");
                     movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1);
                     printf("\nModificando el titulo de la pelicula...\n\n");
-                    movie_getMovieTitle(auxMov, 51, index);
+                    movie_getMovieTitle(auxMov, 51, index); //Pido titulo.
                     isSatisfied = movie_verifyCompliance("'s' para confirmar la modificacion"); //Pregunto si quiere realizar la modificacion.
                     if(isSatisfied == 1)
-                    {   //Si el usuario esta satisfecho con la modificacion, actualizo el dato del empleado.
+                    {   //Si el usuario esta satisfecho con la modificacion, actualizo el dato de la pelicula.
                         strcpy(listM[index].title, auxMov[index].title);
                         printf("\nModificacion exitosa.\n\n");
                     }
@@ -121,7 +121,7 @@ void movie_modifyMovieInfo(sMovie listM[], int sizeM, sGenre listG[], int sizeG,
                 break;
             case 3:
                 if(found == 1)
-                {   //Los mismos pasos pero para el sector.
+                {   //Los mismos pasos pero para el actor.
                     printf("Pelicula seleccionada actualmente:\n");
                     movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1);
                     printf("\nModificando el actor de la pelicula...\n");
@@ -146,10 +146,10 @@ void movie_modifyMovieInfo(sMovie listM[], int sizeM, sGenre listG[], int sizeG,
                 break;
             case 4:
                 if(found == 1)
-                {   //Lo mismo que en el case 2.
+                {   //Lo mismo para la fecha de estreno.
                     printf("Pelicula seleccionada actualmente:\n");
                     movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1);
-                    printf("\nModificando fecha de estreno de la pelicula...\n\n");
+                    printf("\nModificando fecha de estreno de la pelicula...\n");
                     movie_getMovieDate(auxMov, sizeM, index);
                     isSatisfied = movie_verifyCompliance("'s' para confirmar la modificacion");
                     if(isSatisfied == 1)
@@ -170,28 +170,28 @@ void movie_modifyMovieInfo(sMovie listM[], int sizeM, sGenre listG[], int sizeG,
                 }
                 system("pause");
                 break;
-            case 5: //Si se elige la opcion 6, salimos del menu modificar y volvemos al anterior.
+            case 5: //Si se elige la opcion 5, salimos del menu modificar y volvemos al anterior.
                 break;
             default:
                 printf("Error: Opcion invalida.\n\n");
                 system("pause");
                 break;
         }
-    }while(option != 5); //Permaneceremos en este menu hasta que se elija la opcion 6.
+    }while(option != 5); //Permaneceremos en este menu hasta que se elija la opcion 5.
 }
 
 int movie_removeMovie(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sActor listA[], int sizeA, int toRemove)
 {
     int itCould = -1, index, isSatisfied;
-    index = movie_findMovieById(listM, sizeM, toRemove); //Busco el ID del empleado a dar de baja.
+    index = movie_findMovieById(listM, sizeM, toRemove); //Busco el ID de la pelicula a dar de baja.
     if(index != -1)
     {   //Si existe, pido la conformidad del usuario.
         movie_printOneMovie(listM[index], listG, sizeG, listA, sizeA, 1);
-        isSatisfied = movie_verifyCompliance("'s' para confirmar la baja del empleado");
+        isSatisfied = movie_verifyCompliance("'s' para confirmar la baja del pelicula");
         if(isSatisfied == 1)
-        {   //Si esta satisfecho con su decision, hago una baja logica cambiando isEmpty a cero.
+        {   //Si esta satisfecho con su decision, hago una baja logica cambiando isEmpty a 0.
             listM[index].isEmpty = EMPTY;
-            itCould = 0; //Tambien señalo que se pudo eliminar del sistema a ese empleado.
+            itCould = 0; //Tambien señalo que se pudo eliminar del sistema a esa pelicula.
         }
         else
         {
@@ -209,7 +209,7 @@ int movie_searchEmpty(sMovie listM[], int sizeM)
 {
     int i, index = -1;
     for(i=0; i<sizeM; i++)
-    {   //Recorro mi array de empleados hasta encontrar una posicion libre.
+    {   //Recorro mi array de peliculas hasta encontrar una posicion libre.
         if(listM[i].isEmpty == EMPTY)
         {   //Si encuentro espacio libre, mi index sera esa posicion.
             index = i;
@@ -223,9 +223,9 @@ int movie_findMovieById(sMovie listM[], int sizeM, int idToFind)
 {
     int i, index = -1;
     for(i=0; i<sizeM; i++)
-    {   //Recorro mi array de empleados y voy comparando el ID ingresado por el usuario.
-        if(listM[i].id == idToFind && listM[i].isEmpty == BUSY) //Tambien debo tener en cuenta si es un empleado activo.
-        {   //Si encuentro al empleado, mi index sera esa posicion.
+    {   //Recorro mi array de peliculas y voy comparando el ID ingresado por el usuario.
+        if(listM[i].id == idToFind && listM[i].isEmpty == BUSY) //Tambien debo tener en cuenta si es una pelicula activa.
+        {   //Si encuentro la pelicula, mi index sera esa posicion.
             index = i;
             break;
         }
@@ -235,7 +235,7 @@ int movie_findMovieById(sMovie listM[], int sizeM, int idToFind)
 
 void movie_getMovieTitle(sMovie listM[], int strSize, int index)
 {
-    getValidString("titulo", listM[index].title, strSize); //Pido nombre del empleado y luego le doy formato.
+    getValidString("titulo", listM[index].title, strSize, 1); //Pido titulo de la pelicula y luego le doy formato.
     changeStringToLower(listM[index].title);
     changeFirstToUpper(listM[index].title);
 }
@@ -243,13 +243,27 @@ void movie_getMovieTitle(sMovie listM[], int strSize, int index)
 void movie_getMovieDate(sMovie listM[], int sizeM, int index)
 {
     printf("\nIngresando fecha de estreno...\n\n");
-    listM[index].premiere.month = getValidInt("mes", 1, 12, 0);
-    listM[index].premiere.day = getValidInt("dia", 1, 30, 0);
+    listM[index].premiere.month = getValidInt("mes", 1, 12, 0); //Pido el mes.
+    switch(listM[index].premiere.month) //De acuerdo al mes, realizo las validaciones correspondientes.
+    {
+        case 2:
+            listM[index].premiere.day = getValidInt("dia", 1, 28, 0);
+            break;
+        case 4:
+        case 6:
+        case 7:
+        case 8:
+            listM[index].premiere.day = getValidInt("dia", 1, 30, 0);
+            break;
+        default:
+            listM[index].premiere.day = getValidInt("dia", 1, 31, 0);
+            break;
+    }
     listM[index].premiere.year = getValidInt("anio", 1992, 2019, 0);
 }
 
 void movie_sortMovies(sMovie listM[], int sizeM, int order)
-{   //Utilizo el metodo de burbujeo para ordenar alfabeticamente en orden ascendente o descendente.
+{   //Utilizo el metodo de burbujeo para ordenar por año a las peliculas en orden ascendente o descendente.
     int i, j;
     sMovie auxMov;
     for(i=0; i<sizeM-1; i++)
@@ -282,12 +296,11 @@ void movie_printMovies(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sAc
     int i;
     printf("---------------------------------------------------------------------------------------------\n");
     printf("%4s %26s %13s %23s %22s\n", "ID", "Titulo", "Genero", "Fecha de Estreno", "Actor");
-    //Separo por sectores a mis empleados.
     printf("---------------------------------------------------------------------------------------------\n");
-    for(i=0; i<sizeM; i++)
+    for(i=0; i<sizeM; i++) //Recorro mi array de peliculas.
     {
         if(listM[i].isEmpty == BUSY)
-        {   //Y mientras sea un empleado activo cuyo ID de sector corresponda con alguno de los sectores existentes, lo imprimo.
+        {   //Imprimo la pelicula siempre y cuando este activa.
             movie_printOneMovie(listM[i], listG, sizeG, listA, sizeA, 0);
         }
     }
@@ -297,10 +310,10 @@ void movie_printMovies(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sAc
 void movie_printOneMovie(sMovie oneMovie, sGenre listG[], int sizeG, sActor listA[], int sizeA, int format)
 {
     int i, j;
-    char genreDescription[51];
-    char actorName[51]; //Cadena de caracteres auxiliar para guardar descripcion de sector.
+    char genreDescription[51]; //Cadena de caracteres auxiliar para guardar descripcion de genero.
+    char actorName[51]; //Cadena de caracteres auxiliar para guardar nombre del actor.
     for(i=0; i<sizeG; i++)
-    {   //Recorro el array de sectores y si el ID de sector de un empleado corresponde con alguno de los sectores existentes, guardo descripcion.
+    {   //Recorro el array de generos y si el ID de genero de un pelicula corresponde con alguno de los generoes existentes, guardo descripcion.
         if(oneMovie.genreId == listG[i].id)
         {
             strcpy(genreDescription, listG[i].description);
@@ -308,7 +321,7 @@ void movie_printOneMovie(sMovie oneMovie, sGenre listG[], int sizeG, sActor list
         }
     }
     for(j=0; j<sizeA; j++)
-    {
+    {   //Hago lo mismo pero para los actores y guardo el nombre.
         if(oneMovie.actorId == listA[j].id)
         {
             strcpy(actorName, listA[j].name);
@@ -316,7 +329,7 @@ void movie_printOneMovie(sMovie oneMovie, sGenre listG[], int sizeG, sActor list
         }
     }
     if(format == 0)
-    {   //Una vez que tengo descripcion del sector del empleado, segun el formato elegido, imprimo de una u otra manera al empleado.
+    {   //Una vez que tengo descripcion del genero y nombre del actor de la pelicula, segun el formato elegido, imprimo de una u otra manera a la misma.
         printf("%5d %25s %13s %12d/%2d/%d %25s\n", oneMovie.id, oneMovie.title, genreDescription, oneMovie.premiere.day, oneMovie.premiere.month, oneMovie.premiere.year, actorName);
     }
     else
@@ -339,7 +352,7 @@ int movie_verifyCompliance(char message[])
 }
 
 void movie_hardCodeMovies(sMovie listM[], int sizeM)
-{
+{   //Harcodeo id, titulo, fecha de estreno, actor y genero de varias peliculas.
     int i;
     int ids[] = {1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020};
     char titles[][51] = {"Avengers EndGame","Thor","Cellular","Men in Black 4","IronMan","13 Going on 30","Lucy","Nace una estrella","Dime con cuantos?","Guardianes de la galaxia","A perfect murder","La isla","Que paso ayer","Home Alone 3","Deadpool","Sherlock Holmes","Men in Black 3","Avengers Infinity War","Grandes esperanzas","SWAT","XxX"};

@@ -36,17 +36,19 @@ void getString(char[], char[]);
  * \param char[] Lo que se quiere pedir.
  * \param char[] La cadena de caracteres destino.
  * \param int El tamaño de la cadena de caracteres destino.
+ * \param int El formato deseado, 0 para validar que solo tenga letras,
+              1 para validar solo tamaño de la cadena.
  * \return void No devuelve algo.
  *
  */
-void getValidString(char[], char[], int);
+void getValidString(char[], char[], int, int);
 
 /** \brief Pide el ingreso de un numero entero valido en un rango o no.
  *
  * \param char[] Lo que se quiere pedir.
  * \param int Limite inferior.
  * \param int Limite superior.
- * \param int Formato cero si se quiere pedir en un rango, 1 caso contrario.
+ * \param int Formato 0 si se quiere pedir en un rango, 1 caso contrario.
  * \return int Devuelve el entero ingresado.
  *
  */

@@ -61,7 +61,7 @@
 	"Utilities.h"
 	"stringFormat.h"
 
-1557519581 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraymovies.c
+1557697885 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraymovies.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -72,18 +72,18 @@
 
 1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\menu.h
 
-1557515647 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraymovies.h
+1557692869 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraymovies.h
 	"Inputs.h"
 	"Utilities.h"
 	"stringFormat.h"
 
-1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\inputs.h
+1557695375 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\inputs.h
 
-1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\utilities.h
+1557695724 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\utilities.h
 
 1557243231 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\stringformat.h
 
-1557243231 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\inputs.c
+1557697842 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\inputs.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -92,7 +92,7 @@
 	"Utilities.h"
 	"stringFormat.h"
 
-1557519920 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\main.c
+1557696603 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayMovies.h"
@@ -116,7 +116,7 @@
 	"Utilities.h"
 	"stringFormat.h"
 
-1557243231 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\utilities.c
+1557695773 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\utilities.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -131,16 +131,16 @@
 	<stdlib.h>
 	"ArrayMovies.h"
 
-1557519316 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraygenres.c
+1557694614 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraygenres.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayMovies.h"
 
-1557512176 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraygenres.h
+1557692020 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arraygenres.h
 
-1557513226 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arrayactors.h
+1557695013 c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arrayactors.h
 
-1557519240 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arrayactors.c
+1557695320 source:c:\users\alan_\desktop\passucci_alan_1c_1ºparcial\arrayactors.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

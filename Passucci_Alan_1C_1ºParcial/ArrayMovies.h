@@ -15,14 +15,14 @@ typedef struct
 {
     int id;
     char description[51];
-} sGenre; /** Estructura de genero**/
+} sGenre; /** Estructura de genero **/
 
 typedef struct
 {
     int day;
     int month;
     int year;
-} sDate; /** Estructura de fecha**/
+} sDate; /** Estructura de fecha **/
 
 typedef struct
 {
@@ -44,7 +44,7 @@ typedef struct
 int movie_showMenu(char[]);
 
 /** \brief Para indicar que todas las posiciones del array estan vacias,
-           esta funcion pone la bandera (isEmpty) en cero en todas las posiciones
+           esta funcion pone la bandera (isEmpty) en 0 en todas las posiciones
            del array.
  *
  * \param sMovies[] El array de peliculas.
@@ -74,7 +74,7 @@ int movie_searchEmpty(sMovie[], int);
  * \param int El tamaño del array de generos.
  * \param sActor[] El array de actores.
  * \param int El tamaño del array de actores.
- * \return int Devuelve cero si la carga de la pelicula fue exitosa, -1 caso contrario.
+ * \return int Devuelve 0 si la carga de la pelicula fue exitosa, -1 caso contrario.
  *
  */
 int movie_addMovie(sMovie[], int, sGenre[], int, sActor[], int);
@@ -93,15 +93,14 @@ int movie_addMovie(sMovie[], int, sGenre[], int, sActor[], int);
  */
 void movie_modifyMovieInfo(sMovie[], int, sGenre[], int, sActor[], int);
 
-/** \brief Muestra una lista con los generos actuales y le pide al usuario
-           que ingrese uno.
+/** \brief Busca una pelicula en el array de peliculas recibiendo como parametro su ID.
  *
- * \param sGenre[] El array de generos.
- * \param int El tamaño del array de generos.
- * \return sGenre Devuelve una estructura del tipo sGenre.
+ * \param sMovie[] El array de peliculas.
+ * \param int El tamaño del array de peliculas.
+ * \param int El id de la pelicula a buscar.
+ * \return int Devuelve la posicion de la pelicula dentro del array, -1 si no esta en el sistema.
  *
  */
-
 int movie_findMovieById(sMovie[], int, int);
 
 /** \brief Elimina de manera logica (isEmpty = EMPTY) una pelicula recibiendo como
@@ -114,7 +113,7 @@ int movie_findMovieById(sMovie[], int, int);
  * \param sActor[] El array de actores.
  * \param int El tamaño del array de actores.
  * \param int El id de la pelicula a eliminar.
- * \return int Devuelve cero si la pelicula fue dada de baja, -1 caso contrario.
+ * \return int Devuelve 0 si la pelicula fue dada de baja, -1 caso contrario.
  *
  */
 int movie_removeMovie(sMovie[], int, sGenre[], int, sActor[], int, int);
@@ -122,12 +121,12 @@ int movie_removeMovie(sMovie[], int, sGenre[], int, sActor[], int, int);
 /** \brief Verifica si el usuario esta conforme con alguna accion (alta, modificar, baja).
  *
  * \param char[] Mensaje que preguntara sobre la satisfaccion del usuario ante tal accion.
- * \return int Devuelve la respuesta del usuario, 1 si esta satisfecho, cero si no lo esta.
+ * \return int Devuelve la respuesta del usuario, 1 si esta satisfecho, 0 si no lo esta.
  *
  */
 int movie_verifyCompliance(char[]);
 
-/** \brief Le pide al usuario el nombre de un pelicula y lo guarda en la posicion
+/** \brief Le pide al usuario el nombre de una pelicula y lo guarda en la posicion
            correspondiente. Luego corrige el formato de tal manera que quede una mayuscula
            al principio de un nombre y el resto en minusculas.
  *
@@ -139,17 +138,57 @@ int movie_verifyCompliance(char[]);
  */
 void movie_getMovieTitle(sMovie[], int, int);
 
+/** \brief Le pide al usuario la fecha de estreno de una pelicula realizando las
+           validaciones correspondientes y guarda mes, dia, año en la posicion
+           correspondiente.
+ *
+ * \param sMovie[] El array de peliculas.
+ * \param int El tamaño del array de peliculas.
+ * \param int La posicion en la que se quiere guardar dia, mes, año.
+ * \return void No devuelve algo.
+ *
+ */
 void movie_getMovieDate(sMovie[], int, int);
 
+/** \brief Ordena el array de peliculas por año de manera ascendente o descendente.
+ *
+ * \param sMovie[] El array de peliculas.
+ * \param int El tamaño del array de peliculas.
+ * \param int Orden 1 para ascendente, 0 para descendente.
+ * \return void No devuelve algo.
+ *
+ */
 void movie_sortMovies(sMovie[], int, int);
 
+/** \brief Imprime el array de peliculas en forma encolumnada.
+ *
+ * \param sMovie[] El array de peliculas.
+ * \param int El tamaño del array de peliculas.
+ * \param sGenre[] El array de generos.
+ * \param int El tamaño del array de generos.
+ * \param sActor[] El array de actores.
+ * \param int El tamaño del array de actores.
+ * \return void No devuelve algo.
+ *
+ */
 void movie_printMovies(sMovie[], int, sGenre[], int, sActor[], int);
 
+/** \brief
+ *
+ * \param sMovie Una pelicula.
+ * \param sGenre[] El array de generos.
+ * \param int El tamaño del array de generos.
+ * \param sActor[] El array de actores.
+ * \param int El tamaño del array de actores.
+ * \param int Formato 0 para forma de lista, 1 para seleccion.
+ * \return void No devuelve algo.
+ *
+ */
 void movie_printOneMovie(sMovie, sGenre[], int, sActor[], int, int);
 
-/** \brief Carga peliculas en el arreglo de forma automatica con datos preestablecidos.
+/** \brief Carga peliculas en el array de forma automatica con datos preestablecidos.
  *
- * \param sEmployee[] El array de peliculas.
+ * \param sMovie[] El array de peliculas.
  * \param int El tamaño del array de peliculas.
  * \return void No devuelve algo.
  *

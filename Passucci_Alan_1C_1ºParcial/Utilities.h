@@ -11,7 +11,7 @@ int getRandomNumber(int, int, int);
 /** \brief Valida si se trata de un numero decimal (tratando una cadena de caracteres).
  *
  * \param char[] La cadena de caracteres.
- * \return int Devuelve 1 si es valido, cero caso contrario.
+ * \return int Devuelve 1 si es valido, 0 caso contrario.
  *
  */
 int validateFloatNumber(char[]);
@@ -19,7 +19,7 @@ int validateFloatNumber(char[]);
 /** \brief Valida si se trata de un numero entero (tratando una cadena de caracteres).
  *
  * \param char[] La cadena de caracteres.
- * \return int Devuelve 1 si es valido, cero caso contrario.
+ * \return int Devuelve 1 si es valido, 0 caso contrario.
  *
  */
 int validateIntNumber(char[]);
@@ -27,7 +27,7 @@ int validateIntNumber(char[]);
 /** \brief Valida si se trata de una palabra sin numeros.
  *
  * \param char[] La cadena de caracteres.
- * \return int Devuelve 1 si es valido, cero caso contrario.
+ * \return int Devuelve 1 si es valido, 0 caso contrario.
  *
  */
 int validateString(char[]);
@@ -35,7 +35,7 @@ int validateString(char[]);
 /** \brief Valida si se trata de un numero de telefono (tratando una cadena de caracteres).
  *
  * \param char[] La cadena de caracteres.
- * \return int Devuelve 1 si es valido, cero caso contrario.
+ * \return int Devuelve 1 si es valido, 0 caso contrario.
  *
  */
 int validatePhoneNumber(char[]);
@@ -51,7 +51,7 @@ unsigned long int getFactorial(int);
 /** \brief Evalua si se trata de un numero entero o decimal.
  *
  * \param float El decimal a evaluar.
- * \return int Devuelve 1 si es valido, cero caso contrario.
+ * \return int Devuelve 1 si es valido, 0 caso contrario.
  *
  */
 int validateIntOrFloat(float);
@@ -59,7 +59,7 @@ int validateIntOrFloat(float);
 /** \brief Determina si un numero entero es o no primo.
  *
  * \param int El entero a evaluar.
- * \return int Devuelve 1 si es valido, cero caso contrario.
+ * \return int Devuelve 1 si es valido, 0 caso contrario.
  *
  */
 int determinatePrime(int);

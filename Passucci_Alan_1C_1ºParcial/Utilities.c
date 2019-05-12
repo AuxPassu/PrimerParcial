@@ -38,7 +38,7 @@ int validateFloatNumber(char str[])
 }
 
 int validateIntNumber(char str[])
-{   //isdigit() toma un char como argumento y devuelve 1 si es un digito, cero si no lo es.
+{   //isdigit() toma un char como argumento y devuelve 1 si es un digito, 0 si no lo es.
     int i, j, isValid = 1;
     j = strlen(str);
     i = 0;

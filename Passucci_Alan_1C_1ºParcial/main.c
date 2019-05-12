@@ -7,8 +7,7 @@
 #define SIZE_ACTORS 10
 
 /**
-- Falta hacer una funcion que verifique fecha segun mes.
-- Falta cambiar y agregar comentarios.
+- Hacer funciones por si me piden. Buscar genero con mas peliculas, año con mas peliculas, actor con mas peliculas.
 **/
 
 int main()
@@ -30,7 +29,7 @@ int main()
                 if(loaded == 0) //Si la carga de la pelicula fue exitosa, mi contador de peliculas aumenta.
                 {
                     moviesCounter++;
-                    printf("\nPelicula dada de alta con exito\n\n");
+                    printf("\nPelicula dada de alta con exito.\n\n");
                 }
                 system("pause");
                 break;
@@ -66,8 +65,8 @@ int main()
                 system("pause");
                 break;
             case 4:
-                if(moviesCounter > 0) //Solo puedo informar si existen peliculas en el sistema.
-                {   //Ordeno y muestro la lista actual de peliculas (por año). Luego realizo el listar.
+                if(moviesCounter > 0) //Solo puedo listar si existen peliculas en el sistema.
+                {   //Ordeno y muestro la lista actual de peliculas por año y los actores por pais.
                     movie_sortMovies(arrayMovie, SIZE_MOVIES, 1);
                     movie_printMovies(arrayMovie, SIZE_MOVIES, arrayGenre, SIZE_GENRES, arrayActor, SIZE_ACTORS);
                     actor_sortAndPrintActByCountry(arrayActor, SIZE_ACTORS);
