@@ -1,0 +1,10 @@
+/* 
+En caso de que me pidan genero con mas peliculas:
+- Creo una estructura auxliar de generos que tenga genreId, description y moviesCounter.
+- Creo la funcion que realizara las operaciones.
+- Creo un array de la estructura auxiliar.
+- Relleno el genreId con los ids de generos existentes de la estructura sGenre.
+- Recorro el array de peliculas, comparo si genreId == genreId de la estructura auxiliar, entonces aumento el moviesCounter de ese genero.
+- Busco que genero tiene mas peliculas, para eso recorro los contadores buscando el valor maximo.
+- Imprimo en pantalla.
+*/ Nota: Para actores con mas peliculas seria lo mismo.
