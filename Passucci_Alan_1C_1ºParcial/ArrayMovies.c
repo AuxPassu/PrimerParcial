@@ -13,7 +13,7 @@ int movie_showMenu(char message[])
     printf("---------------------------------\n");
     printf("%s", message);
     printf("\n---------------------------------\n\n");
-    option = getValidInt("una opcion", 1, 5, 0); //Pido un entero valido sin rango.
+    option = getValidInt("una opcion", 1, 5, 0); //Pido un entero valido con rango.
     printf("\n");
     return option;
 }
