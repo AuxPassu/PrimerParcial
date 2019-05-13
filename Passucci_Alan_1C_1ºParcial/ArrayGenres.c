@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ArrayMovies.h"
 
 sGenre genre_getGenre(sGenre listG[], int sizeG)

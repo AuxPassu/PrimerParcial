@@ -6,6 +6,13 @@
 
 typedef struct
 {
+	int genreId;
+	char description[51];
+	int moviesCounter;
+} sAuxGenre;
+
+typedef struct
+{
     int id;
     char name[51];
     char country[51];
@@ -194,3 +201,13 @@ void movie_printOneMovie(sMovie, sGenre[], int, sActor[], int, int);
  *
  */
 void movie_hardCodeMovies(sMovie[], int);
+
+void movie_report(sMovie[], int, sGenre[], int, sActor[], int);
+
+void movie_reportMoviesActorEEUU(sMovie[], int, sGenre[], int, sActor[], int);
+
+void movie_reportMoviesPerGenre(sMovie[], int, sGenre[], int, sActor[], int);
+
+void movie_reportGenreQuantityMovies(sMovie[], int, sGenre[], int);
+
+void movie_reportGenreLessMovies(sMovie[], int, sGenre[], int);

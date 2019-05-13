@@ -13,7 +13,7 @@ int movie_showMenu(char message[])
     printf("---------------------------------\n");
     printf("%s", message);
     printf("\n---------------------------------\n\n");
-    option = getValidInt("una opcion", 1, 5, 0); //Pido un entero valido con rango.
+    option = getValidInt("una opcion", 1, 6, 0); //Pido un entero valido con rango.
     printf("\n");
     return option;
 }
@@ -372,4 +372,143 @@ void movie_hardCodeMovies(sMovie listM[], int sizeM)
         listM[i].genreId = genres[i];
         listM[i].isEmpty = BUSY;
     }
+}
+
+void movie_report(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sActor listA[], int sizeA)
+{
+    int option;
+    do
+    {
+        option = movie_showMenu(" 1. Peliculas con genero y actor.\n 2. Peliculas cuyo actor es de EEUU.\n 3. Peliculas por genero.\n 4. Cantidad de peliculas por genero.\n 5. Genero/s con menos peliculas.\n 6. Atras."); //Creo un nuevo menu correspondiente a informes.
+        switch(option)
+        {
+            case 1:
+                movie_printMovies(listM, sizeM, listG, sizeG, listA, sizeA);
+                system("pause");
+                break;
+            case 2:
+                movie_reportMoviesActorEEUU(listM, sizeM, listG, sizeG, listA, sizeA);
+                system("pause");
+                break;
+            case 3:
+                movie_reportMoviesPerGenre(listM, sizeM, listG, sizeG, listA, sizeA);
+                system("pause");
+                break;
+            case 4:
+                movie_printMovies(listM, sizeM, listG, sizeG, listA, sizeA);
+                movie_reportGenreQuantityMovies(listM, sizeM, listG, sizeG);
+                system("pause");
+                break;
+            case 5:
+                movie_printMovies(listM, sizeM, listG, sizeG, listA, sizeA);
+                movie_reportGenreLessMovies(listM, sizeM, listG, sizeG);
+                system("pause");
+                break;
+            case 6: //Si se elige la opcion 6, salimos del menu modificar y volvemos al anterior.
+                break;
+            default:
+                printf("Error: Opcion invalida.\n\n");
+                system("pause");
+                break;
+        }
+    }while(option != 6); //Permaneceremos en este menu hasta que se elija la opcion 5.
+}
+
+void movie_reportMoviesActorEEUU(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sActor listA[], int sizeA)
+{
+    int i, j;
+    printf("Peliculas cuya nacionalidad del actor es EEUU:\n\n");
+    printf("---------------------------------------------------------------------------------------------\n");
+    printf("%4s %26s %13s %23s %22s\n", "ID", "Titulo", "Genero", "Fecha de Estreno", "Actor");
+    printf("---------------------------------------------------------------------------------------------\n");
+    for(i=0; i<sizeA; i++)
+    {
+        for(j=0; j<sizeM; j++)
+        {
+            if(listM[j].actorId == listA[i].id)
+            {
+                if(strcmp(listA[i].country, "EEUU") == 0)
+                {
+                    movie_printOneMovie(listM[j], listG, sizeG, listA, sizeA, 0);
+                }
+            }
+        }
+    }
+    printf("---------------------------------------------------------------------------------------------\n\n");
+}
+
+void movie_reportMoviesPerGenre(sMovie listM[], int sizeM, sGenre listG[], int sizeG, sActor listA[], int sizeA)
+{
+    int i, j;
+    //printf("---------------------------------------------------------------------------------------------\n");
+    //printf("%4s %26s %13s %23s %22s\n", "ID", "Titulo", "Genero", "Fecha de Estreno", "Actor");
+    //printf("---------------------------------------------------------------------------------------------\n");
+    for(i=0; i<sizeG; i++) //Recorro mi array de generos.
+    {
+        printf("---------------------------------------------------------------------------------------------\n");
+        printf("Genero: %s\n", listG[i].description);
+        printf("---------------------------------------------------------------------------------------------\n");
+        for(j=0; j<sizeM; j++)
+        {
+            if(listM[j].genreId == listG[i].id && listM[j].isEmpty == BUSY)
+            {   //Imprimo la pelicula siempre y cuando este activa.
+                movie_printOneMovie(listM[j], listG, sizeG, listA, sizeA, 0);
+            }
+        }
+    }
+    printf("---------------------------------------------------------------------------------------------\n\n");
+}
+
+void movie_reportGenreQuantityMovies(sMovie listM[], int sizeM, sGenre listG[], int sizeG)
+{
+	int i, j;
+	sAuxGenre arrayAuxGenre[sizeG]; //Creo un array de la estructura sAuxGenre.
+	printf("Cantidad de peliculas de cada genero:\n\n");
+	for(i=0; i<sizeG; i++)
+	{	//Recorro el array de generos y voy llenando los campos del array auxiliar.
+        arrayAuxGenre[i].genreId = listG[i].id;
+        strcpy(arrayAuxGenre[i].description, listG[i].description);
+        arrayAuxGenre[i].moviesCounter = 0;
+		for(j=0; j<sizeM; j++)
+		{	//Recorro el array de peliculas.
+			if(listM[j].genreId == arrayAuxGenre[i].genreId && listM[j].isEmpty == BUSY)
+			{	//Si el genero de la pelicula es igual al del auxiliar, aumento el contador de peliculas de ese genero.
+				arrayAuxGenre[i].moviesCounter++;
+			}
+		}
+        printf("Genero %s: %d peliculas.\n\n", arrayAuxGenre[i].description, arrayAuxGenre[i].moviesCounter);
+    }
+}
+
+void movie_reportGenreLessMovies(sMovie listM[], int sizeM, sGenre listG[], int sizeG)
+{
+	int i, j, min, flag = 0;
+	sAuxGenre arrayAuxGenre[sizeG]; //Creo un array de la estructura sAuxGenre.
+	printf("Genero/s con menos peliculas:\n");
+	for(i=0; i<sizeG; i++)
+	{	//Recorro el array de generos y voy llenando los campos del array auxiliar.
+		arrayAuxGenre[i].genreId = listG[i].id;
+		strcpy(arrayAuxGenre[i].description, listG[i].description);
+		arrayAuxGenre[i].moviesCounter = 0;
+		for(j=0; j<sizeM; j++)
+		{	//Recorro el array de peliculas.
+			if(listM[j].genreId == arrayAuxGenre[i].genreId && listM[j].isEmpty == BUSY)
+			{	//Si el genero de la pelicula es igual al del auxiliar, aumento el contador de peliculas de ese genero.
+				arrayAuxGenre[i].moviesCounter++;
+			}
+		}
+		if(arrayAuxGenre[i].moviesCounter < min || flag == 0)
+		{	//Busco el maximo valor de entre todos los contadores del array auxiliar.
+			min = arrayAuxGenre[i].moviesCounter;
+			flag = 1;
+		}//Recorro el array auxiliar de generos.
+	}
+	for(i=0; i<sizeG; i++)
+    {
+        if(arrayAuxGenre[i].moviesCounter == min)
+		{	//Evaluo si el contador de peliculas es igual al minimo e imprimo en pantalla el/los generos con menos peliculas.
+			printf("\nGenero %s: %d peliculas.\n", arrayAuxGenre[i].description, arrayAuxGenre[i].moviesCounter);
+		}
+    }
+	printf("\n");
 }

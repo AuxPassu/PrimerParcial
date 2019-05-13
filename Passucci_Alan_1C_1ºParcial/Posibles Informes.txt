@@ -1,0 +1,55 @@
+/* 
+En caso de que me pidan genero con mas peliculas:
+- Creo una estructura auxliar de generos que tenga genreId, description y moviesCounter.
+- Creo la funcion que realizara las operaciones.
+- Creo un array de la estructura auxiliar.
+- Relleno el genreId con los ids de generos existentes de la estructura sGenre.
+- Recorro el array de peliculas, comparo si genreId == genreId de la estructura auxiliar, entonces aumento el moviesCounter de ese genero.
+- Busco que genero tiene mas peliculas, para eso recorro los contadores buscando el valor maximo.
+- Vuelvo a recorrer el array auxiliar y comparo si el movieCounter de ese genero es igual al maximo, entonces lo imprimo en pantalla.
+*/ Nota: Para actores con mas peliculas seria lo mismo.
+
+typedef struct
+{
+	int genreId;
+	char description[51];
+	int moviesCounter;
+} sAuxGenre;
+
+void genre_reportGenreMoreMovies(sMovie listM[], int sizeM, sGenre listG[], int sizeG)
+{
+	int i, j, max, flag = 0;
+	sAuxGenre arrayAuxGenre[sizeG]; //Creo un array de la estructura sAuxGenre.
+	for(i=0; i<sizeG; i++)
+	{	//Recorro el array de generos y voy llenando los campos del array auxiliar.
+		arrayAuxGenre[i].genreId = listG[i].id;
+		strcpy(arrayAuxGenre[i].description, listG[i].description);
+		arrayAuxGenre[i].moviesCounter = 0;
+	}
+	for(i=0; i<sizeG; i++)
+	{	//Recorro el array auxiliar de generos.
+		for(j=0; j<sizeM; j++)
+		{	//Recorro el array de peliculas.
+			if(listM[j].genreId == arrayAuxGenre[i].genreId)
+			{	//Si el genero de la pelicula es igual al del auxiliar, aumento el contador de peliculas de ese genero.
+				arrayAuxGenre[i].moviesCounter++;
+			}
+		}
+	}
+	for(i=0; i<sizeG; i++)
+	{	//Recorro el array auxiliar de generos.
+		if(arrayAuxGenre[i].moviesCounter > max || flag == 0)
+		{	//Busco el maximo valor de entre todos los contadores del array auxiliar.
+			max = arrayAuxGenre[i].moviesCounter;
+			flag = 1;
+		}
+	}
+	printf("\nGeneros con mas peliculas:\n");
+	for(i=0; i<sizeG; i++)
+	{	//Recorro el array auxiliar de generos.
+		if(arrayAuxGenre[i].moviesCounter == max)
+		{	//Evaluo si el contador de peliculas es igual al maximo e imprimo en pantalla el/los generos con mas peliculas.
+			printf("\nGenero %s: %d peliculas.", arrayAuxGenre[i].description, arrayAuxGenre[i].moviesCounter);
+		}
+	}
+}

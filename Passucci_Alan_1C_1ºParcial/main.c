@@ -21,7 +21,7 @@ int main()
     movie_hardCodeMovies(arrayMovie, SIZE_MOVIES); //Hardcodeo peliculas para tener algunas con las cuales trabajar.
     do
     {
-        option = movie_showMenu(" 1. Alta de pelicula.\n 2. Modificar datos de pelicula.\n 3. Baja de pelicula.\n 4. Listar peliculas y actores.\n 5. Salir."); //Creo el menu principal.
+        option = movie_showMenu(" 1. Alta de pelicula.\n 2. Modificar datos de pelicula.\n 3. Baja de pelicula.\n 4. Listar peliculas y actores.\n 5. Informar.\n 6. Salir."); //Creo el menu principal.
         switch(option)
         {
             case 1:
@@ -78,7 +78,17 @@ int main()
                 system("pause");
                 break;
             case 5:
-                userContinue = 'n'; //Si la opcion 5 es elegida, cierro el programa.
+                if(moviesCounter > 0)
+                {
+                    movie_report(arrayMovie, SIZE_MOVIES, arrayGenre, SIZE_GENRES, arrayActor, SIZE_ACTORS);
+                }
+                else
+                {
+                    printf("Error: No hay peliculas cargadas en el sistema.\n\n");
+                }
+                break;
+            case 6:
+                userContinue = 'n'; //Si la opcion 6 es elegida, cierro el programa.
                 printf("Saliendo...\nPrograma terminado.\n\n");
                 system("pause");
                 break;
